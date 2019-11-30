@@ -11,7 +11,7 @@ Class ModelFormulario {
                                                 VALUES (:nombre, :email, :password)");
         $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
         $stmt->bindParam(":email", $datos["email"], PDO::PARAM_STR);
-        $stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
+        $stmt->bindParam(":password", $datos["password"], PDO::PARAM_INT);
 
         if($stmt->execute()){
             return "ok";
@@ -41,5 +41,23 @@ Class ModelFormulario {
         $stmt->close();
         $stmt = null;
     }
+
+    static public function modelUsersUpdate ($tabla, $datos){
+        $stmt = ConexionDB::conexion()->prepare("UPDATE $tabla SET nombre = :nombre, email = :email, password = :password
+                                                WHERE id = :id");
+        $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+        $stmt->bindParam(":email", $datos["email"], PDO::PARAM_STR);
+        $stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
+        $stmt->bindParam(":id", $datos["id"], PDO::PARAM_STR);
+
+        if($stmt->execute()){
+            return "ok";
+        }else{
+            print_r(ConexionDB::conexion()->errorInfo());
+        }
+
+        $stmt->close();
+        $stmt = null;
+    } 
 
 }

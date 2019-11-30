@@ -18,7 +18,7 @@ if(isset($_SESSION["validar"])){
     return;
 }
 
-$usuarios = FormularioController::index();
+$usuarios = FormularioController::index(null, null);
 
 // print_r($usuarios);
 
@@ -43,7 +43,7 @@ $usuarios = FormularioController::index();
               
                 <td>
                 <div class="btn-group">
-                    <button class="btn btn-warning"><i class="fas fa-user-edit"></i></button>
+                    <a href="index.php?pagina=editar&id=<?php echo $users["id"]?>" class="btn btn-warning"><i class="fas fa-user-edit"></i></a>
                     <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
                 </div>
             </td>

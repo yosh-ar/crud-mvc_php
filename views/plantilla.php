@@ -104,6 +104,7 @@ session_start();
                if($_GET["pagina"]== 'registro' ||
                $_GET["pagina"]== 'inicio'||
                $_GET["pagina"]== 'login'||
+               $_GET["pagina"]== 'editar'||
                $_GET["pagina"]== 'salir'){
                 include "pages/".$_GET["pagina"].".php";
                }else{
